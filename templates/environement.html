@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <title>Info: {{ env[0] }}</title>
+</head>
+<body>
+    <h1>Informations complète: {{ env[0] }}</h1>
+    <p class="text">
+        Ce milieu de vie est {{ env[1] }}, la température moyenne est de {{ env[2] }}°C et il y a environ {{ env[3] }}mm de pluie par an
+    </p>
+
+    <p style="font-size:18px">
+        La liste des animaux vivant dans cet environement:
+        <ul>
+        {% for animal in animaux %}
+                <li><a href="/race?type={{ animal[0] }}">{{ animal[0] }}</a></li>
+        {% endfor %}
+        </ul>
+    </p>
+    <a href="/" class="menu">Retour au menu</a>
+</body>
+</html>

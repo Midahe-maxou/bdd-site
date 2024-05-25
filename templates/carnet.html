@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Carnet de santé de {{ sante[1] }}:</h1>
+        <p class="reponse">
+            <span class="categorie">Tatouage: {{ sante[0] }}</span>
+            <span class="categorie">Race: {{ sante[2] }}</span>
+            <span class="categorie">Sexe: {{ sante[5] }}</span>
+            <span class="categorie">Taille: {{ sante[3] }}cm</span>
+            <span class="categorie">Poids: {{ sante[4]/1000 }}Kg</span>
+            <span class="categorie">Vacciné: {% if sante[6] %} oui {% else %} non {% endif %}</span>
+            <span class="categorie">Castré: {% if sante[7] %} oui {% else %} non {% endif %}</span>
+        </p>
+    <a href="javascript:history.back()" class="menu">Revenir à votre recherche</a><br>
+    <a href="/" class="menu">Revenir au menu</a>
+</body>
+</html>

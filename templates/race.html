@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <title>Info: {{ race[0] }}</title>
+</head>
+<body>
+    <h1>Information complète sur les {{ race[0] }}s:</h1>
+    <p class="text">
+        Leur pelage est {{ race[2] }}, il est {{ race[1] }} et a une espérence de vie de {{ race[3] }} ans. <br/>
+        Leur milieu de vie est: <a href="/environement?type={{ race[4] }}">{{ race[4] }}</a>
+    </p>
+    <a href="/" class="menu">Retour au menu</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+	<title>Recherche</title>
+</head>
+<body>
+	<a href="/" class="menu">Revenir au menu</a>
+	<h1>Résultat de la recherche:</h1>
+	{% if animaux|length != 0 %}
+		{% for i in range(animaux|length) %}
+			<p class="reponse">
+				<span class="categorie">Résultat N° {{ i+1 }}</span>
+				<span class="categorie">Tatouage: {{ animaux[i][0] }}</span>
+				<span class="categorie">Nom: {{ animaux[i][1] }}</span>
+				<span class="categorie">Couleur: {{ animaux[i][3] }}</span>
+				<span class="categorie">Age: {{ animaux[i][4] }}</span>
+				<span class="categorie">Sexe: {{ animaux[i][5] }}</span>
+				<span class="categorie">Race: <a href="/race?type={{ animaux[i][2] }}">{{ animaux[i][2] }}</a></span>
+				<span class="categorie">Reservé: {% if animaux[i][6] %} oui {% else %} non {% endif %}</span>
+				<span class="categorie">Accéder à son <a href="/carnet?tatouage={{ animaux[i][0] }}">carnet de santé</a></span>
+			</p>
+		{% endfor %}
+	{% else %}
+		<h2>
+			Aucun résultat trouvé
+		</h2>
+	{% endif %}
+</body>
+</html>

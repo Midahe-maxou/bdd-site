@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+	<title>Document</title>
+</head>
+<body>
+	<h1>SLOGAN</h1>
+	<h2>Personnalisez votre recherche:</h2>
+
+	<form action="/recherche" method="get" class="formulaire">
+
+		<div class="select">
+			<label for="race">Race de l'animal: </label>
+			<select name="race" id="select-race">
+				<option value="Tout">Toute</option>
+				{% for r in races %}
+					<option value="{{ r[0] }}">{{ r[0] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="select">
+			<label for="couleur">Couleur de l'animal</label>
+			<select name="couleur" id="select-couleur">
+				<option value="Tout">Toute</option>
+				{% for c in couleurs %}
+					<option value="{{ c[0] }}">{{ c[0] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="select">
+			<label for="age-max">Âge maximum de l'animal:</label>
+			<input type="range" name="age-max" id="select-age_max" min="1" max="{{ age_max }}" value="{{ age_max }}" oninput="document.getElementById('range-value').innerHTML = this.value" style="position: relative; top:9px;">
+			<span id="range-value">{{ age_max }}</span>
+		</div>
+
+		<div class="select">
+			<label for="sexe">Sexe de l'animal</label>
+			<select name="sexe" id="select-sexe">
+				{% for sexe in ['Tout', 'masculin', 'féminin'] %}
+					<option value="{{ sexe }}">{{ sexe }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div class="select">
+			<label for="trier">Trier par:</label>
+			<select name="trier" id="select-trier">
+				{% for t in ['nom', 'race', 'age', 'sexe'] %}
+					<option value="{{ t }}">{{ t }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<label for="non-reserve">Seulement les non-réservé:</label>
+		<input type="checkbox" name="non-reserve" id="select-reserve" value="false">
+		<br/>
+
+		<input type="submit" value="Valider" class="submit">
+	</form>
+
+</body>
+</html>
